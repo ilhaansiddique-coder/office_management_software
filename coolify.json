@@ -1,0 +1,15 @@
+{
+  "name": "rahestock-inventory",
+  "type": "static",
+  "build": {
+    "command": "npm run build",
+    "directory": "dist"
+  },
+  "environment": {
+    "NODE_ENV": "production"
+  },
+  "healthcheck": {
+    "path": "/",
+    "port": 3000
+  }
+}

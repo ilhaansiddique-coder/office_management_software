@@ -1,0 +1,524 @@
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Manrope-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Manrope-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Manrope-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Manrope-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/Manrope-800.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Fraunces-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Fraunces-700.woff2") format("woff2");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  :root,
+  html[data-theme] {
+    /* Bridge existing semantic tokens to daisyUI theme tokens */
+    --background: var(--color-base-100);
+    --foreground: var(--color-base-content);
+
+    --card: var(--color-base-100);
+    --card-foreground: var(--color-base-content);
+
+    --popover: var(--color-base-100);
+    --popover-foreground: var(--color-base-content);
+
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-content);
+
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-content);
+
+    --muted: var(--color-base-200);
+    --muted-foreground: color-mix(in oklab, var(--color-base-content) 65%, transparent);
+
+    --success: var(--color-success);
+    --success-foreground: var(--color-success-content);
+
+    --warning: var(--color-warning);
+    --warning-foreground: var(--color-warning-content);
+
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-content);
+
+    --destructive: var(--color-error);
+    --destructive-foreground: var(--color-error-content);
+
+    --border: var(--color-base-300);
+    --input: var(--color-base-300);
+    --ring: var(--color-primary);
+
+    --radius: 1rem;
+
+    --sidebar-background: var(--color-base-200);
+    --sidebar-foreground: var(--color-base-content);
+    --sidebar-primary: var(--color-primary);
+    --sidebar-primary-foreground: var(--color-primary-content);
+    --sidebar-accent: var(--color-accent);
+    --sidebar-accent-foreground: var(--color-accent-content);
+    --sidebar-border: var(--color-base-300);
+    --sidebar-ring: var(--color-primary);
+
+    --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Fraunces", ui-serif, serif;
+  }
+
+  html[data-theme="forest"] {
+    color-scheme: dark;
+    --color-base-100: oklch(20.84% 0.008 17.911);
+    --color-base-200: oklch(18.522% 0.007 17.911);
+    --color-base-300: oklch(16.203% 0.007 17.911);
+    --color-base-content: oklch(83.768% 0.001 17.911);
+    --color-primary: oklch(68.628% 0.185 148.958);
+    --color-primary-content: oklch(0% 0 0);
+    --color-secondary: oklch(69.776% 0.135 168.327);
+    --color-secondary-content: oklch(13.955% 0.027 168.327);
+    --color-accent: oklch(70.628% 0.119 185.713);
+    --color-accent-content: oklch(14.125% 0.023 185.713);
+    --color-neutral: oklch(30.698% 0.039 171.364);
+    --color-neutral-content: oklch(86.139% 0.007 171.364);
+    --color-info: oklch(72.06% 0.191 231.6);
+    --color-info-content: oklch(0% 0 0);
+    --color-success: oklch(64.8% 0.15 160);
+    --color-success-content: oklch(0% 0 0);
+    --color-warning: oklch(84.71% 0.199 83.87);
+    --color-warning-content: oklch(0% 0 0);
+    --color-error: oklch(71.76% 0.221 22.18);
+    --color-error-content: oklch(0% 0 0);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  :where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"])):not(.input) {
+    @apply h-10 w-full rounded-xl border border-base-300 bg-base-100 px-3 py-2 text-sm text-base-content shadow-sm transition-colors;
+    border-color: color-mix(in oklab, var(--color-base-content) 35%, transparent);
+  }
+
+  :where(select):not(.select) {
+    @apply h-10 w-full rounded-xl border border-base-300 bg-base-100 px-3 py-2 text-sm text-base-content shadow-sm transition-colors;
+    border-color: color-mix(in oklab, var(--color-base-content) 35%, transparent);
+  }
+
+  :where(textarea):not(.textarea) {
+    @apply min-h-[80px] w-full rounded-xl border border-base-300 bg-base-100 px-3 py-2 text-sm text-base-content shadow-sm transition-colors;
+    border-color: color-mix(in oklab, var(--color-base-content) 35%, transparent);
+  }
+
+  :where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]),
+    select,
+    textarea):focus-visible {
+    @apply border-primary outline-none ring-0;
+  }
+
+  :where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]),
+    select,
+    textarea):disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  :where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]),
+    textarea):not(.input):not(.textarea)::placeholder {
+    color: color-mix(in oklab, var(--color-base-content) 55%, transparent);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(1200px 600px at 8% -10%, color-mix(in oklab, var(--color-primary) 14%, transparent), transparent),
+      radial-gradient(900px 500px at 95% 0%, color-mix(in oklab, var(--color-accent) 18%, transparent), transparent),
+      linear-gradient(180deg, var(--background), color-mix(in oklab, var(--background) 88%, var(--color-base-200)));
+    background-attachment: fixed;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  @media (max-width: 640px) {
+
+    html,
+    body,
+    #root {
+      overflow-x: hidden;
+      width: 100%;
+    }
+  }
+
+  @media (display-mode: standalone) {
+
+    html,
+    body,
+    #root {
+      overflow-x: hidden;
+      width: 100%;
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  button,
+  [role="button"],
+  a {
+    touch-action: manipulation;
+  }
+
+
+  /* Compact view styles */
+  .compact-view .space-y-4>*+* {
+    margin-top: 0.5rem !important;
+  }
+
+  .compact-view .space-y-6>*+* {
+    margin-top: 0.75rem !important;
+  }
+
+  .compact-view .p-6 {
+    padding: 5px 10px !important;
+  }
+
+  .compact-view .py-4 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .compact-view table td {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  .min-w-\[200px\] {
+    min-width: 150px;
+  }
+
+  .dialog-content,
+  .alert-dialog-content {
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .dialog-content::-webkit-scrollbar,
+  .dialog-content *::-webkit-scrollbar,
+  .alert-dialog-content::-webkit-scrollbar,
+  .alert-dialog-content *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dialog-content::-webkit-scrollbar-track,
+  .dialog-content *::-webkit-scrollbar-track,
+  .alert-dialog-content::-webkit-scrollbar-track,
+  .alert-dialog-content *::-webkit-scrollbar-track {
+    margin: 10px 6px;
+    background: transparent;
+    border-radius: 999px;
+  }
+
+  .dialog-content::-webkit-scrollbar-thumb,
+  .dialog-content *::-webkit-scrollbar-thumb,
+  .alert-dialog-content::-webkit-scrollbar-thumb,
+  .alert-dialog-content *::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  .field-control {
+    @apply h-10 w-full rounded-xl border border-base-300 bg-base-100 px-3 py-2 text-sm text-base-content shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-0 disabled:cursor-not-allowed disabled:opacity-50;
+    border-color: color-mix(in oklab, var(--color-base-content) 35%, transparent);
+  }
+
+  .field-control-area {
+    @apply min-h-[80px] w-full rounded-xl border border-base-300 bg-base-100 px-3 py-2 text-sm text-base-content shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-0 disabled:cursor-not-allowed disabled:opacity-50;
+    border-color: color-mix(in oklab, var(--color-base-content) 35%, transparent);
+  }
+
+  .field-control::placeholder,
+  .field-control-area::placeholder {
+    color: color-mix(in oklab, var(--color-base-content) 55%, transparent);
+  }
+
+  .app-shell {
+    border-radius: 0;
+    border: 0;
+    background: var(--card);
+    box-shadow: none;
+  }
+
+  /* Global popup consistency contract */
+  .dialog-content,
+  .alert-dialog-content {
+    font-family: var(--font-sans);
+    color: var(--foreground);
+  }
+
+  .dialog-content h1,
+  .dialog-content h2,
+  .dialog-content h3,
+  .dialog-content h4,
+  .alert-dialog-content h1,
+  .alert-dialog-content h2,
+  .alert-dialog-content h3,
+  .alert-dialog-content h4 {
+    color: var(--foreground);
+  }
+
+  .dialog-content p,
+  .dialog-content span,
+  .dialog-content td,
+  .dialog-content th,
+  .alert-dialog-content p,
+  .alert-dialog-content span,
+  .alert-dialog-content td,
+  .alert-dialog-content th {
+    color: inherit;
+  }
+
+  .dialog-content .card,
+  .alert-dialog-content .card {
+    border-color: var(--color-base-300);
+    background-color: color-mix(in oklab, var(--color-base-100) 94%, var(--color-base-200));
+    box-shadow: none;
+  }
+
+  .dialog-content .card-title,
+  .alert-dialog-content .card-title {
+    font-size: 1rem;
+    line-height: 1.35;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+
+  .dialog-content label,
+  .alert-dialog-content label {
+    color: color-mix(in oklab, var(--color-base-content) 82%, transparent);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .dialog-content [class*="bg-gradient"],
+  .alert-dialog-content [class*="bg-gradient"] {
+    background-image: none !important;
+    background-color: color-mix(in oklab, var(--color-base-100) 92%, var(--color-base-200)) !important;
+  }
+}
+
+@layer utilities {
+  .lucide-trash-2 {
+    color: var(--destructive) !important;
+  }
+
+  @media (min-width: 1024px) {
+    .grid.gap-3.sm\:gap-4.grid-cols-2.sm\:grid-cols-3.lg\:grid-cols-5 {
+      margin-top: 0 !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid.gap-4.grid-cols-2.sm\:grid-cols-3.lg\:grid-cols-5 {
+      margin-top: 0 !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .grid.gap-4.grid-cols-2.md\:grid-cols-4 {
+      margin-top: 0 !important;
+    }
+
+    .grid.gap-4.grid-cols-2.sm\:grid-cols-3.lg\:grid-cols-5 {
+      margin-top: 0 !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .grid.gap-4.md\:grid-cols-4 {
+      margin-top: 0 !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .grid.grid-cols-2.sm\:grid-cols-4.gap-3 {
+      margin-top: 0 !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .flex.flex-wrap.gap-3 {
+      margin-top: 0 !important;
+    }
+  }
+
+
+
+  .date-input-tight {
+    padding-right: 0.25rem;
+  }
+
+  .date-input-tight::-webkit-calendar-picker-indicator {
+    margin-right: 0;
+    padding: 0;
+  }
+
+  .sales-review-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .sales-review-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .sales-review-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 999px;
+  }
+
+  .sales-review-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .table-scroll-wrapper {
+    position: relative;
+  }
+
+  .table-scroll-body>div {
+    scrollbar-width: none;
+  }
+
+  .table-scroll-body>div::-webkit-scrollbar {
+    height: 0;
+  }
+
+  .table-scroll-body>div.table-inner-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .table-scroll-body>div.table-inner-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .table-scroll-body>div.table-inner-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 999px;
+  }
+
+  .table-scroll-body>div.table-inner-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .table-scroll-bar {
+    height: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .table-scroll-bar::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .table-scroll-bar::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 999px;
+  }
+
+  .table-scroll-bar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .table-vertical-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .table-vertical-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .table-vertical-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 999px;
+  }
+
+  .table-vertical-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

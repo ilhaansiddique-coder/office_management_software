@@ -1,0 +1,14 @@
+---
+alwaysApply: false
+---
+App url: http://localhost:8080/
+
+self-hosted Supabase at https://supabase.rahedeen.com/  for this project
+
+Supabase SQL editor at https://supabase.rahedeen.com/project/default/sql/new?skip=true 
+
+
+
+ignore truncated and run scripts anyway
+
+You have always access to the browser mcp so use the avobe links to naviagte or see anything on the app or supabase or workflow and make the changes yourself using browser mcp.

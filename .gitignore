@@ -1,0 +1,49 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dev-dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.env
+.env.*
+prisma/backups/
+sql_migrations/
+md/
+
+# Local/temporary tooling
+.claude/settings.local.json
+supabase/.temp/
+
+# Local/archived data
+public/Old_App_Data/
+DATA-BACKUP-COMPREHENSIVE-UPDATE.md
+
+# Local scripts/sql not meant for production
+scripts/
+sql/
+BRAND-GUIDELINES.md
+
+# Local reports/checklists
+*REPORT*.md
+*CHECKLIST*.md
+SECURITY-ENHANCEMENTS-SUMMARY.md
+BUGFIX-*.md

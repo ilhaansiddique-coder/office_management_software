@@ -1,0 +1,4 @@
+# This is a private inventory management system
+# Disallow all search engine indexing for security
+User-agent: *
+Disallow: /

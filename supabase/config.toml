@@ -1,0 +1,49 @@
+project_id = "smopyfuaijaklmtpwgws"
+
+[functions.admin-create-user]
+verify_jwt = true
+
+[functions.admin-delete-user]
+verify_jwt = true
+
+[functions.admin-list-users]
+verify_jwt = true
+
+[functions.admin-update-user]
+verify_jwt = true
+
+[functions.export-data]
+verify_jwt = true
+
+[functions.import-data]
+verify_jwt = true
+
+[functions.reset-app]
+verify_jwt = true
+
+[functions.restore-admin]
+verify_jwt = true
+
+[functions.woocommerce-import]
+verify_jwt = true
+
+[functions.woocommerce-sync]
+verify_jwt = true
+
+[functions.stop-import]
+verify_jwt = true
+
+[functions.stop-sync]
+verify_jwt = true
+
+[functions.pathao-order]
+verify_jwt = true
+
+[functions.github-backup]
+verify_jwt = true
+
+[functions.steadfast-status-check]
+verify_jwt = false
+
+[functions.steadfast-create-order]
+verify_jwt = false

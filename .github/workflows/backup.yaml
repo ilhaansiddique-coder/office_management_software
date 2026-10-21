@@ -1,0 +1,94 @@
+name: supabase-backup
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 1 PM and 11 PM Bangladesh time (UTC+6)
+    - cron: "0 7 * * *"
+    - cron: "0 17 * * *"
+
+jobs:
+  run_db_backup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      BACKUP_ENABLED: ${{ vars.BACKUP_ENABLED }}
+    steps:
+      - name: Check if backups are enabled
+        run: |
+          if [ "$BACKUP_ENABLED" != "true" ]; then
+            echo "Backups are disabled. Exiting workflow."
+            exit 0
+          fi
+
+      - name: Checkout repository
+        if: env.BACKUP_ENABLED == 'true'
+        uses: actions/checkout@v3
+        with:
+          ref: Backups
+
+      - name: Setup Supabase CLI
+        if: env.BACKUP_ENABLED == 'true'
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Check DB URL set
+        if: env.BACKUP_ENABLED == 'true'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          if [ -z "$SUPABASE_DB_URL" ]; then
+            echo "SUPABASE_DB_URL is EMPTY"
+            exit 1
+          else
+            echo "SUPABASE_DB_URL is set"
+          fi
+
+      - name: Create backup folder
+        if: env.BACKUP_ENABLED == 'true'
+        run: mkdir -p prisma/backups
+
+      - name: Backup roles
+        if: env.BACKUP_ENABLED == 'true'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: supabase db dump --db-url "$SUPABASE_DB_URL" -f prisma/backups/roles.sql --role-only
+
+      - name: Backup schema
+        if: env.BACKUP_ENABLED == 'true'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: supabase db dump --db-url "$SUPABASE_DB_URL" -f prisma/backups/schema.sql
+
+      - name: Backup data
+        if: env.BACKUP_ENABLED == 'true'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: supabase db dump --db-url "$SUPABASE_DB_URL" -f prisma/backups/data.sql --data-only --use-copy
+
+      - name: Move backups into timestamp folder
+        if: env.BACKUP_ENABLED == 'true'
+        run: |
+          TS="$(TZ=Asia/Dhaka date +%F_%H-%M)"
+          mkdir -p "prisma/backups/${TS}"
+          mv prisma/backups/*.sql "prisma/backups/${TS}/"
+
+      - name: Show backup files
+        if: env.BACKUP_ENABLED == 'true'
+        run: |
+          echo "Backup files:"
+          ls -la prisma/backups
+          echo "Latest backup folder:"
+          ls -la prisma/backups | tail -n 5
+          echo "Git status:"
+          git status -sb
+
+      - name: Commit backups
+        if: env.BACKUP_ENABLED == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Supabase backup
+          file_pattern: prisma/backups/**/*.sql
+          branch: Backups
