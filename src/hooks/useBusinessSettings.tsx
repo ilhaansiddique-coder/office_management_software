@@ -48,11 +48,11 @@ export const useBusinessSettings = () => {
         // Return default settings if no data or error
         return {
           id: 'default',
-          business_name: 'RaheDeen',
+          business_name: 'Nusrah',
           invoice_prefix: 'INV',
           invoice_count_start: 1,
           phone: '01915628762',
-          email: 'Rahedeenbd@gmail.com',
+          email: 'Nusrahbd@gmail.com',
           address: 'Road 22, House 57, Rupnagar Abashik, Mirpur 7, Dhaka, Bangladesh',
           invoice_footer_message: 'Thank you for doing business with us!',
           low_stock_alert_quantity: 12,
@@ -65,11 +65,11 @@ export const useBusinessSettings = () => {
       if (!data || data.length === 0) {
         return {
           id: 'default',
-          business_name: 'Rahedeen Productions',
+          business_name: 'Nusrah Productions',
           invoice_prefix: 'INV',
           invoice_count_start: 1,
           phone: '+880123456789',
-          email: 'info@rahedeen.com',
+          email: 'info@Nusrah.com',
           address: 'Dhaka, Bangladesh',
           address_line1: 'Dhaka, Bangladesh',
           brand_color: '#2c7be5',

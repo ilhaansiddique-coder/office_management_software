@@ -77,11 +77,11 @@ const Auth = () => {
               </div>
             )}
           </div>
-          <CardTitle className="text-2xl font-bold">
-            {businessSettings?.business_name || "Rahedeen Productions"}
+          <CardTitle className="w-full justify-center text-center text-2xl font-bold">
+            {businessSettings?.business_name || "Nusrah Inventory Management System"}
           </CardTitle>
-          <CardDescription>
-            Wholesale clothing inventory management system
+          <CardDescription className="w-full text-center">
+            Inventory management system
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -94,12 +94,12 @@ const Auth = () => {
             <TabsContent value="signin">
               <form onSubmit={handleSignIn} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="signin-email">Email</Label>
+                  <Label htmlFor="signin-email">User ID or email</Label>
                   <Input
                     id="signin-email"
                     name="email"
-                    type="email"
-                    placeholder="your@email.com"
+                    type="text"
+                    placeholder="Enter your ID or email"
                     required
                   />
                 </div>

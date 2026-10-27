@@ -4,10 +4,14 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node server/dev.js",
+    "server": "node server/index.js",
+    "accounts:setup": "node server/provision-local-accounts.js",
+    "db:migrate": "node server/migrate-cli.js",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
+    "test": "vitest run",
     "preview": "vite preview",
     "start": "vite preview --host 0.0.0.0 --port 3000"
   },
@@ -94,6 +98,7 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^7.3.1",
-    "vite-plugin-pwa": "^1.2.0"
+    "vite-plugin-pwa": "^1.2.0",
+    "vitest": "^5.0.5"
   }
 }

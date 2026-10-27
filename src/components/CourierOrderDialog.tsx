@@ -34,11 +34,12 @@ interface PathaoArea {
 }
 
 // Helper function to normalize text for matching
+const punctuationPattern = new RegExp("[-,./\\\\]+", "g");
 const normalizeText = (text: string): string => {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[,\-\.\/\\]+/g, ' ') // Replace punctuation with spaces
+    .replace(punctuationPattern, ' ') // Replace punctuation with spaces
     .replace(/\s+/g, ' ') // Normalize multiple spaces
     .replace(/['"()]/g, ''); // Remove quotes and parentheses
 };

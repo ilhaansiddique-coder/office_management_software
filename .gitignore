@@ -25,6 +25,7 @@ dist-ssr
 *.sw?
 .env
 .env.*
+local-credentials.txt
 prisma/backups/
 sql_migrations/
 md/
